@@ -81,4 +81,9 @@ public class ActorService {
 	public void deleteActor(@GraphQLArgument(name = "id") Integer id) {
 		actorRepository.deleteById(id);
 	}
+
+	@GraphQLMutation
+	public Actor createActor(Actor newActor) {
+		return actorRepository.save(newActor);
+	}
 }
