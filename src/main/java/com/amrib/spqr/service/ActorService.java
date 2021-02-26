@@ -35,10 +35,10 @@ public class ActorService {
 	public Actor getActorById(@GraphQLArgument(name = "id") Integer id) {
 		return actorRepository.findById(id).get();
 	}
-	
+
 	@GraphQLQuery
-	public Actor getActor(@GraphQLContext Film film) {
-		return actorRepository.findById(film.getActorId()).get();
+	public List<Actor> getActor(@GraphQLContext Film film) {
+		return actorRepository.findAll();
 	}
 
 	@GraphQLQuery
