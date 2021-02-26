@@ -37,7 +37,7 @@ public class ActorService {
 	}
 
 	@GraphQLQuery
-	public List<Actor> getActor(@GraphQLContext Film film) {
+	public List<Actor> getActors(@GraphQLContext Film film, @GraphQLArgument(name = "filmId") Integer filmId) {
 		return actorRepository.findAll();
 	}
 
@@ -75,5 +75,10 @@ public class ActorService {
 				subscriber -> subscribers.put(actorId,
 						subscriber.onDispose(() -> subscribers.remove(actorId, subscriber))),
 				FluxSink.OverflowStrategy.LATEST);
+	}
+
+	@GraphQLMutation
+	public void deleteActor(@GraphQLArgument(name = "id") Integer id) {
+		actorRepository.deleteById(id);
 	}
 }
