@@ -86,4 +86,5 @@ public class ActorService {
 	public Actor createActor(Actor newActor) {
 		return actorRepository.save(newActor);
 	}
+	
 }
