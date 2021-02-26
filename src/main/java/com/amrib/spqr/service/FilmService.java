@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class FilmService {
 
 	private final FilmRepository filmRepository;
-	private final ActorRepository actorRepository;
+	private final ActorService actorService;
 
 	@GraphQLQuery
 	public List<Film> getAllFilms() {
@@ -39,10 +39,5 @@ public class FilmService {
 	@GraphQLMutation
 	public void deleteFilm(@GraphQLArgument(name = "id") Integer id) {
 		filmRepository.deleteById(id);
-	}
-
-	@GraphQLMutation
-	public Film createFilm(Film newFilm) {
-		return filmRepository.save(newFilm);
 	}
 }
