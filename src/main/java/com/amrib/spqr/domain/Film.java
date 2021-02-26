@@ -25,10 +25,12 @@ public class Film {
 	private Integer filmId;
 	private String name;
 	private Date launchDate;
+	private Integer actorId;
 
-	public Film(String name, Date launchDate) {
+	public Film(String name, Date launchDate, Integer actorId) {
 		super();
 		this.name = name;
 		this.launchDate = launchDate;
+		this.actorId = actorId;
 	}
 }

@@ -26,15 +26,12 @@ public class Actor {
 	private String lastname;
 	private Date dob;
 	private String address;
-	private Integer filmId;
 
-	public Actor(String firstname, String lastname, Date dob, String address, Integer filmId) {
+	public Actor(String firstname, String lastname, Date dob, String address) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.dob = dob;
 		this.address = address;
-		this.filmId = filmId;
-
 	}
 }

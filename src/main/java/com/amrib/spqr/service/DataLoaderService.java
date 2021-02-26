@@ -39,10 +39,10 @@ public class DataLoaderService {
 
 			Date dateOfBirth = DataLoaderService.between(new Date(1960, 01, 01), new Date(1980, 01, 01));
 			Date dateOfLaunch = DataLoaderService.between(new Date(1990, 01, 01), new Date(2000, 01, 01));
-			Film film = new Film(films.get(actorName), dateOfLaunch);
-			filmRepository.save(film);
-			Actor actor = new Actor(names[0], names[1], dateOfBirth, "Mumbai India", film.getFilmId());
+			Actor actor = new Actor(names[0], names[1], dateOfBirth, "Mumbai India");
 			actorRepository.save(actor);
+			Film film = new Film(films.get(actorName), dateOfLaunch, actor.getActorId());
+			filmRepository.save(film);
 		}
 
 	}

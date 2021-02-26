@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.amrib.spqr.domain.Actor;
 import com.amrib.spqr.domain.AddressInputType;
+import com.amrib.spqr.domain.Film;
 import com.amrib.spqr.repository.ActorRepository;
 
 import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLContext;
 import io.leangen.graphql.annotations.GraphQLInputField;
 import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -32,6 +34,11 @@ public class ActorService {
 	@GraphQLQuery
 	public Actor getActorById(@GraphQLArgument(name = "id") Integer id) {
 		return actorRepository.findById(id).get();
+	}
+	
+	@GraphQLQuery
+	public Actor getActor(@GraphQLContext Film film) {
+		return actorRepository.findById(film.getActorId()).get();
 	}
 
 	@GraphQLQuery
