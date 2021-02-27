@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.amrib.spqr.domain.Actor;
 import com.amrib.spqr.domain.Film;
@@ -42,8 +41,7 @@ public class FilmService {
 	}
 
 	@GraphQLMutation
-	public Film createFilm(@GraphQLArgument(name = "film") Film film,
-			@GraphQLArgument(name = "id") Integer actorId) {
+	public Film createFilm(@GraphQLArgument(name = "film") Film film, @GraphQLArgument(name = "id") Integer actorId) {
 		System.out.println(film.toString());
 		Actor actor = actorRepository.findById(actorId).get();
 		Film newFilm = new Film(film.getName(), new Date(), Arrays.asList(actor));

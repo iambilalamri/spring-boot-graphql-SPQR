@@ -14,16 +14,18 @@ import org.springframework.stereotype.Service;
 import com.amrib.spqr.domain.Actor;
 import com.amrib.spqr.domain.Film;
 import com.amrib.spqr.repository.ActorRepository;
+import com.amrib.spqr.repository.FestivalRepository;
 import com.amrib.spqr.repository.FilmRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class DataLoaderService {
 
-	@Autowired
-	FilmRepository filmRepository;
-
-	@Autowired
-	ActorRepository actorRepository;
+	private final FilmRepository filmRepository;
+	private final ActorRepository actorRepository;
+	private final FestivalRepository festivalRepository;
 
 	@PostConstruct
 	public void loadData() {
@@ -55,4 +57,22 @@ public class DataLoaderService {
 
 		return new Date(randomMillisSinceEpoch);
 	}
+
+//	@PostConstruct
+//	public void loadData() {
+//		Actor actor1 = new Actor(1, "Rami", "Malek", new Date(), "LA, USA");
+//		actorRepository.save(actor1);
+//		Actor actor2 = new Actor(2, "Tom", "Cruise", new Date(), "LA, USA");
+//		Actor actor3 = new Actor(3, "Amir", "Khan", new Date(), "LA, USA");
+//		Actor actor4 = new Actor(4, "Jeniffer", "Aniston", new Date(), "LA, USA");
+//		//actorRepository.saveAll(Arrays.asList(actor1, actor2, actor3, actor4));
+//
+//		Film film1 = new Film(1, "Mr Robot", new Date(), Arrays.asList(actor1, actor2));
+//		Film film2 = new Film(2, "Love story", new Date(), Arrays.asList(actor3, actor4));
+//		Film film3 = new Film(3, "Joker", new Date(), Arrays.asList(actor1, actor4));
+//		//filmRepository.saveAll(Arrays.asList(film1, film2, film3));
+//
+//		Festival festival = new Festival(1, "Oscar", new Date(), Arrays.asList(film1, film2, film3));
+//		//festivalRepository.save(festival);
+//	}
 }
