@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddressInputType {
+public class Address {
 
 	private Integer id;
 	private String address;

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,12 +27,13 @@ public class Film {
 	private Integer filmId;
 	private String name;
 	private Date launchDate;
-	private Integer actorId;
+	@OneToMany
+	private List<Actor> actors;
 
-	public Film(String name, Date launchDate, Integer actorId) {
+	public Film(String name, Date launchDate, List<Actor> actors) {
 		super();
 		this.name = name;
 		this.launchDate = launchDate;
-		this.actorId = actorId;
+		this.actors = actors;
 	}
 }

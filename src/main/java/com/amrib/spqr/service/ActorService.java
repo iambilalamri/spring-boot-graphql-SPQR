@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.amrib.spqr.domain.Actor;
-import com.amrib.spqr.domain.AddressInputType;
+import com.amrib.spqr.domain.Address;
 import com.amrib.spqr.domain.Film;
 import com.amrib.spqr.repository.ActorRepository;
 
@@ -37,7 +37,7 @@ public class ActorService {
 	}
 
 	@GraphQLQuery
-	public List<Actor> getActors(@GraphQLContext Film film, @GraphQLArgument(name = "filmId") Integer filmId) {
+	public List<Actor> getActors(@GraphQLContext Film film) {
 		return actorRepository.findAll();
 	}
 
@@ -59,7 +59,7 @@ public class ActorService {
 	}
 
 	@GraphQLMutation
-	public Actor updateAddressByInputType(@GraphQLInputField(name = "addressInput") AddressInputType input) {
+	public Actor updateAddressByInputType(@GraphQLInputField(name = "addressInput") Address input) {
 		Actor actor = actorRepository.findById(input.getId()).orElse(null);
 		actor.setAddress(input.getAddress());
 		actorRepository.save(actor);

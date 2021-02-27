@@ -1,5 +1,6 @@
 package com.amrib.spqr.service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +42,7 @@ public class DataLoaderService {
 			Date dateOfLaunch = DataLoaderService.between(new Date(1990, 01, 01), new Date(2000, 01, 01));
 			Actor actor = new Actor(names[0], names[1], dateOfBirth, "Mumbai India");
 			actorRepository.save(actor);
-			Film film = new Film(films.get(actorName), dateOfLaunch, actor.getActorId());
+			Film film = new Film(films.get(actorName), dateOfLaunch, Arrays.asList(actor));
 			filmRepository.save(film);
 		}
 
